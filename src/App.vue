@@ -3,7 +3,9 @@
     <Header/><br><br>
     <b-container class="bv-example-row">
       <b-row>
-        <b-col sm="6" offset="3"> <QuestionBox/> </b-col>
+        <b-col sm="6" offset="3"> 
+          <QuestionBox :currentQuestion="questions[index]" :next="next" /> 
+        </b-col>
       </b-row>
     </b-container>
   </div>
@@ -21,8 +23,14 @@ export default {
   },
   data(){
     return {
-      questions: []
+      questions: [],
+      index: 0
     }
+  },
+  methods: {
+    next() {
+      this.index++
+    } 
   },
   mounted: function(){
     fetch("https://opentdb.com/api.php?amount=10&type=multiple",{
