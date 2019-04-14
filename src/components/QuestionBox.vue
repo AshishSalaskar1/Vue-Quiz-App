@@ -12,7 +12,7 @@
           v-for="(answer,index) in shuffledAnswers" 
           :key="index" 
           @click="selectAnswer(index)"
-          :class="{selected: index===selectedIndex }">
+          :class="highlightAnswer(index)">
           {{answer}}
         </b-list-group-item>
       </b-list-group>
@@ -60,7 +60,21 @@ export default {
   methods:{
     selectAnswer(index) {
       this.selectedIndex = index
-      console.log(index)
+      // console.log(index)
+    },
+    highlightAnswer(index) {
+        let retClass = ''
+
+        if(!this.answered && index === this.selectedIndex){
+            retClass = 'selected'
+        }
+        else if(this.answered && index === this.correctIndex){
+          retClass = 'correct'
+        }
+        else if(this.answered && index === this.selectedIndex && index !== this.correctIndex){
+          retClass ='incorrect'
+        }
+        return retClass
     },
     submitAnswer(){
       let isCorrect = false
@@ -71,6 +85,7 @@ export default {
       }
 
       this.answered = true
+
       this.increment(isCorrect)
 
     },

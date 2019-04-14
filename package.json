@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "postinstall": "if test \"$NODE_ENV\" = \"production\" ; then npm run build ; fi ",
+    "start": "node server.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
@@ -11,8 +13,10 @@
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.18",
     "core-js": "^2.6.5",
+    "express": "^4.16.4",
     "jquery": "^1.9.1",
     "lodash": "^4.17.11",
+    "serve-static": "^1.13.2",
     "vue": "^2.6.6"
   },
   "devDependencies": {
