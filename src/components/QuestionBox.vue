@@ -13,7 +13,8 @@
           :key="index" 
           @click="selectAnswer(index)"
           :class="highlightAnswer(index)">
-          {{answer}}
+          <!-- {{answer}} -->
+          <b-p v-html="answer"></b-p>
         </b-list-group-item>
       </b-list-group>
 
@@ -24,7 +25,7 @@
       :disabled="selectedIndex===null || answered " >
         Submit</b-button> 
       <b-button @click="next" variant="success"
-      :disabled="!answered">
+      :disabled="!answered || countAns>9">
         Next
       </b-button>
        <br><br>
@@ -50,7 +51,8 @@ export default {
       shuffledAnswers: [],
       correctIndex: null,
       answered: false,
-      displayMessage: ''
+      displayMessage: '',
+      countAns: 0
     }
   },
   watch: {
@@ -93,7 +95,12 @@ export default {
         isCorrect = true
         this.displayMessage = "Yes! You got it right!"
       }
- 
+      this.countAns++;
+
+      if(this.countAns>9){
+          this.displayMessage = this.displayMessage+"\nGame Over! Thanks for Playing\n";
+      }
+
       this.increment(isCorrect)
 
     },

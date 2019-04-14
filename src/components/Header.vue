@@ -1,13 +1,13 @@
 <template>
   <div>
     <b-nav tabs>
-      <b-nav-item disabled><b><b-h1>Quiz App</b-h1></b></b-nav-item>
+      <b-nav-item disabled><b><h2>Quiz App</h2></b></b-nav-item>
       <br>
 
     </b-nav>
     <br>
       <b-p>
-          <h5>Answer Count: {{numCorrect}}/{{numTotal}}</h5>
+          <b-h2><b>Your Score: {{numCorrect}}/{{numTotal}} </b></b-h2>
         </b-p>
   </div> 
 </template>
