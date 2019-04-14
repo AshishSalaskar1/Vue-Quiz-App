@@ -31,7 +31,6 @@
        <br><br>
        <b><b-h3>{{displayMessage}}</b-h3></b>
     </b-jumbotron>
-
    
   </div>
 </template>
@@ -59,7 +58,7 @@ export default {
     currentQuestion : {
       immediate: true,
       handler(){
-        this.selectedIndex = null
+        this.selectedIndex = null,
         this.shuffleAnswers()
         this.answered = false,
         this.displayMessage = ''
@@ -68,7 +67,9 @@ export default {
   },
   methods:{
     selectAnswer(index) {
-      this.selectedIndex = index
+      if(!this.answered){
+        this.selectedIndex = index
+      }
       // console.log(index)
     },
     highlightAnswer(index) {

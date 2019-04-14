@@ -3,8 +3,10 @@
     <Header
     :numCorrect="numCorrect"
     :numTotal= "numTotal"
+    :key="componentKey"
     />
     <br><br>
+    <!-- <b-button @click="componentKey++">Some</b-button> -->
 
     <b-container class="bv-example-row">
       <b-row>
@@ -20,8 +22,12 @@
       </b-row>
     </b-container>
 
+
+
   </div>
 </template>
+
+
 <script>
 
 import Header from './components/Header.vue'
