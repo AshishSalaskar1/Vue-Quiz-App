@@ -11,7 +11,7 @@
         </b-p>
     <!-- //style="display:none" -->
     <div >
-        <b-button v-b-modal.modal-1 id="resPopup">Launch demo modal</b-button>
+        <b-button v-b-modal.modal-1 style="display:none" id="resPopup">Launch demo modal</b-button>
         <!-- Modal Component -->
         <b-modal 
         id="modal-1" 
@@ -25,7 +25,7 @@
               <h3><b>{{numCorrect}} / {{numTotal}}</b></h3>
               <br>
             </div>
-          </p>
+          <p>
 
           <div slot="modal-footer">
               <b-button @click="playAgain">Play Again</b-button>
