@@ -8,7 +8,7 @@
       <hr>
 
       <b-list-group>
-        <b-list-group-item
+        <b-list-group-item v-html
           v-for="(answer,index) in shuffledAnswers" 
           :key="index" 
           @click="selectAnswer(index)"
@@ -21,12 +21,17 @@
 
       <b-button variant="primary"
       @click="submitAnswer"
-      :disabled="selectedIndex===null || answered" >
+      :disabled="selectedIndex===null || answered " >
         Submit</b-button> 
-      <b-button @click="next" variant="success" href="#">
+      <b-button @click="next" variant="success"
+      :disabled="!answered">
         Next
       </b-button>
+       <br><br>
+       <b><b-h3>{{displayMessage}}</b-h3></b>
     </b-jumbotron>
+
+   
   </div>
 </template>
 
@@ -44,7 +49,8 @@ export default {
       selectedIndex: null,
       shuffledAnswers: [],
       correctIndex: null,
-      answered: false
+      answered: false,
+      displayMessage: ''
     }
   },
   watch: {
@@ -53,7 +59,8 @@ export default {
       handler(){
         this.selectedIndex = null
         this.shuffleAnswers()
-        this.answered = false
+        this.answered = false,
+        this.displayMessage = ''
       }
     }
   },
@@ -79,13 +86,14 @@ export default {
     submitAnswer(){
       let isCorrect = false
 
-      if(this.selectedIndex === this.correctIndex){
-        isCorrect = true
-        console.log("YES1")
-      }
-
+      this.displayMessage = "Oops! You were wrong.."
       this.answered = true
 
+      if(this.selectedIndex === this.correctIndex){
+        isCorrect = true
+        this.displayMessage = "Yes! You got it right!"
+      }
+ 
       this.increment(isCorrect)
 
     },
