@@ -8,7 +8,7 @@
       <hr>
 
       <b-list-group>
-        <b-list-group-item v-html
+        <b-list-group-item
           v-for="(answer,index) in shuffledAnswers" 
           :key="index" 
           @click="selectAnswer(index)"
