@@ -7,7 +7,7 @@
     </b-nav>
     <br>
       <b-p>
-          <b-h2><b>Your Score: {{numCorrect}}/{{numTotal}} </b></b-h2>
+          <h5><b class="score">Your Score: {{numCorrect}}/{{numTotal}} </b></h5>
         </b-p>
   </div> 
 </template>
@@ -22,4 +22,10 @@ export default {
 
 }
 </script>
+
+<style scoped>
+.score {
+  color: rgb(47, 51, 255);
+}
+</style>
 
